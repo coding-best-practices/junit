@@ -16,6 +16,10 @@ Selenide:
 
 https://vimeo.com/107647158
 
+Awaitility:
+
+http://www.awaitility.org/
+
 Test Conatainers:
 
 https://www.youtube.com/watch?v=-mYJKwrySOw
