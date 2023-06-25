@@ -53,4 +53,16 @@ public class CashCardController {
                 ));
         return ResponseEntity.ok(page.getContent());
     }
+
+    @PutMapping("/{requestedId}")
+    private ResponseEntity<Void> putCashCard(@PathVariable Long requestedId, @RequestBody CashCard cashCardUpdate) {
+        Optional<CashCard> cashCardOptional = cashCardRepository.findById(requestedId);
+        if (cashCardOptional.isPresent()) {
+            CashCard cashCard = cashCardOptional.get();
+            CashCard updatedCashCard = new CashCard(cashCard.id(), cashCardUpdate.amount());
+            cashCardRepository.save(updatedCashCard);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
